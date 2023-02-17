@@ -27,4 +27,12 @@ defmodule ExmealWeb.MealsController do
       |> text("")
     end
   end
+
+  def update(conn, attrs) do
+    with {:ok, %Meal{} = meal} <- Exmeal.update_meal(attrs) do
+      conn
+      |> put_status(:ok)
+      |> render("update.json", meal: meal)
+    end
+  end
 end
