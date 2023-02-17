@@ -5,7 +5,7 @@ defmodule Exmeal.Meal do
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
-  @required_params [:description, :date, :calories]
+  @required_attrs [:description, :date, :calories]
 
   @json_fields [:id, :description, :date, :calories]
 
@@ -19,9 +19,9 @@ defmodule Exmeal.Meal do
     timestamps()
   end
 
-  def changeset(params) do
+  def changeset(attrs) do
     %__MODULE__{}
-    |> cast(params, @required_params)
-    |> validate_required(@required_params)
+    |> cast(attrs, @required_attrs)
+    |> validate_required(@required_attrs)
   end
 end
