@@ -5,7 +5,7 @@ defmodule Exmeal.Meals.Get do
     with %Meal{} = meal <- Repo.get(Meal, id) do
       {:ok, meal}
     else
-      nil -> {:error, Error.new("Meal not found", :not_found)}
+      nil -> {:error, Error.new_not_found_meal()}
     end
   end
 end

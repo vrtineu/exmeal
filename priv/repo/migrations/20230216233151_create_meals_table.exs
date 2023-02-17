@@ -10,6 +10,6 @@ defmodule Exmeal.Repo.Migrations.CreateMealsTable do
       timestamps()
     end
 
-    create(unique_index(:meals, [:date, :description]))
+    create(unique_index(:meals, [:date]))
   end
 end

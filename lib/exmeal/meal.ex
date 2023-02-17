@@ -19,9 +19,10 @@ defmodule Exmeal.Meal do
     timestamps()
   end
 
-  def changeset(attrs) do
-    %__MODULE__{}
+  def changeset(meal \\ %__MODULE__{}, attrs) do
+    meal
     |> cast(attrs, @required_attrs)
     |> validate_required(@required_attrs)
+    |> unique_constraint(:date)
   end
 end

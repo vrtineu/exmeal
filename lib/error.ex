@@ -10,4 +10,6 @@ defmodule Exmeal.Error do
       status: status
     }
   end
+
+  def new_not_found_meal, do: new("Meal not found", :not_found)
 end
