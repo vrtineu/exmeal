@@ -4,12 +4,10 @@ defmodule Exmeal.Repo.Migrations.CreateMealsTable do
   def change do
     create table(:meals) do
       add(:description, :string)
-      add(:date, :naive_datetime)
+      add(:date, :date)
       add(:calories, :integer)
 
       timestamps()
     end
-
-    create(unique_index(:meals, [:date]))
   end
 end

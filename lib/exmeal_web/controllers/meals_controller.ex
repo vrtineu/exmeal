@@ -16,7 +16,8 @@ defmodule ExmealWeb.MealsController do
   def show(conn, %{"id" => id}) do
     with {:ok, meal} <- Exmeal.get_meal_by_id(id) do
       conn
-      |> render("show.json", meal: meal)
+      |> put_status(:ok)
+      |> render("meal.json", meal: meal)
     end
   end
 
@@ -32,7 +33,7 @@ defmodule ExmealWeb.MealsController do
     with {:ok, %Meal{} = meal} <- Exmeal.update_meal(attrs) do
       conn
       |> put_status(:ok)
-      |> render("update.json", meal: meal)
+      |> render("meal.json", meal: meal)
     end
   end
 end

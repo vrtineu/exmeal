@@ -13,7 +13,7 @@ defmodule Exmeal.Meal do
 
   schema "meals" do
     field(:description, :string)
-    field(:date, :naive_datetime)
+    field(:date, :date)
     field(:calories, :integer)
 
     timestamps()
@@ -23,6 +23,7 @@ defmodule Exmeal.Meal do
     meal
     |> cast(attrs, @required_attrs)
     |> validate_required(@required_attrs)
-    |> unique_constraint(:date)
+    |> validate_length(:description, min: 3, max: 255)
+    |> validate_number(:calories, greater_than: 0)
   end
 end
