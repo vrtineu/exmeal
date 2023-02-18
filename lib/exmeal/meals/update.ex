@@ -9,8 +9,7 @@ defmodule Exmeal.Meals.Update do
   end
 
   defp update_meal(meal, attrs) do
-    meal
-    |> Meal.changeset(attrs)
-    |> Repo.update()
+    meal = Meal.changeset(meal, attrs)
+    Repo.update(meal)
   end
 end
