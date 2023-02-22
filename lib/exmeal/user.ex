@@ -5,7 +5,13 @@ defmodule Exmeal.User do
 
   alias Exmeal.Meal
 
+  @primary_key {:id, :binary_id, autogenerate: true}
+
   @required_attrs [:name, :email, :cpf]
+
+  @json_fields [:id, :name, :email, :cpf]
+
+  @derive {Jason.Encoder, only: @json_fields}
 
   schema "users" do
     field :name, :string
