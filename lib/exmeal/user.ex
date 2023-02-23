@@ -9,16 +9,13 @@ defmodule Exmeal.User do
 
   @required_attrs [:name, :email, :cpf]
 
-  @json_fields [:id, :name, :email, :cpf]
-
-  @derive {Jason.Encoder, only: @json_fields}
+  @derive {Jason.Encoder, only: @required_attrs ++ [:id, :meals]}
 
   schema "users" do
     field :name, :string
     field :email, :string
     field :cpf, :string
-
-    has_many(:meals, Meal)
+    has_many :meals, Meal
 
     timestamps()
   end
@@ -27,7 +24,7 @@ defmodule Exmeal.User do
     user
     |> cast(attrs, @required_attrs)
     |> validate_required(@required_attrs)
-    |> validate_length(:name, min: 3, max: 255)
     |> validate_format(:email, ~r/@/)
+    |> validate_length(:name, min: 3, max: 255)
   end
 end
