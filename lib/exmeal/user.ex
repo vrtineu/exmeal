@@ -9,7 +9,7 @@ defmodule Exmeal.User do
 
   @required_attrs [:name, :email, :cpf]
 
-  @derive {Jason.Encoder, only: @required_attrs ++ [:id, :meals]}
+  @derive {Jason.Encoder, only: @required_attrs ++ [:id]}
 
   schema "users" do
     field :name, :string
@@ -25,6 +25,5 @@ defmodule Exmeal.User do
     |> cast(attrs, @required_attrs)
     |> validate_required(@required_attrs)
     |> validate_format(:email, ~r/@/)
-    |> validate_length(:name, min: 3, max: 255)
   end
 end
