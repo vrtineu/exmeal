@@ -5,4 +5,5 @@ defmodule Exmeal do
   defdelegate update_meal(attrs), to: Exmeal.Meals.Update, as: :call
 
   defdelegate create_user(attrs), to: Exmeal.Users.Create, as: :call
+  defdelegate get_user_by_id(attrs), to: Exmeal.Users.Get, as: :by_id
 end

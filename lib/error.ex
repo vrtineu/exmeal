@@ -12,4 +12,5 @@ defmodule Exmeal.Error do
   end
 
   def new_not_found_meal, do: new("Meal not found", :not_found)
+  def new_not_found_user, do: new("User not found", :not_found)
 end
